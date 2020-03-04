@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-from bottle import route, run
+from bottle import route, run, template
 
-@route('/message')
-def hello():
-    return "Today is a beautiful day"  
+@route('/hello/<name>')
+def index(name):
+    return template('<b>Hello{{name}}</b>!',name=name)
 
-run(host='localhost', port=8080, debug=True)
+run(host='localhost', port=8080)
